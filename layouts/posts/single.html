@@ -26,9 +26,11 @@
             {{- $image = .RelPermalink -}}
         {{- end -}}
         {{- with $image -}}
-            <div class="featured-image">
-                {{- dict "Src" . "Title" $.Description "Resources" $.Resources | partial "plugin/image.html" -}}
-            </div>
+            {{- if eq $params.featuredimageonpost true -}}
+                <div class="featured-image">
+                    {{- dict "Src" . "Title" $.Description "Resources" $.Resources | partial "plugin/image.html" -}}
+                </div>
+            {{- end -}}
         {{- end -}}
 
         <div class="single-card" {{ with $image }}data-image="true"{{ end }}>
